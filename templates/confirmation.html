@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Confirmed | AeroReserve</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #eef5ff, #f8fbff);
+            font-family: Arial, sans-serif;
+            color: #172033;
+        }
+
+        /* MAIN TICKET */
+
+        .ticket {
+            max-width: 780px;
+            margin: 45px auto;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 18px 45px rgba(0, 55, 120, 0.18);
+        }
+
+        /* HEADER */
+
+        .ticket-header {
+            background: linear-gradient(135deg, #1473ff, #084298);
+            color: white;
+            padding: 28px 35px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .confirmed {
+            background: #d9f7e8;
+            color: #087443;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* SUCCESS */
+
+        .success-section {
+            text-align: center;
+            padding: 40px 20px 25px;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background: #198754;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 18px rgba(25, 135, 84, 0.25);
+        }
+
+        .success-section h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .success-section p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+
+        /* ROUTE */
+
+        .flight-route {
+            margin: 15px 25px 30px;
+            padding: 28px 30px;
+            background: linear-gradient(135deg, #f5f9ff, #eef5ff);
+            border: 1px solid #dce9ff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .airport {
+            text-align: center;
+        }
+
+        .airport-code {
+            font-size: 34px;
+            font-weight: bold;
+            color: #1268e8;
+        }
+
+        .airport-name {
+            color: #4b5563;
+            margin-top: 3px;
+            font-size: 14px;
+        }
+
+        .flight-line {
+            flex: 1;
+            height: 2px;
+            background: #1674f5;
+            margin: 0 22px;
+            position: relative;
+        }
+
+        .flight-line i {
+            position: absolute;
+            left: 47%;
+            top: -13px;
+            font-size: 23px;
+            color: #111;
+            background: #eef5ff;
+            padding: 0 6px;
+        }
+
+        /* DETAILS */
+
+        .details {
+            padding: 0 30px 10px;
+        }
+
+        .detail-box {
+            background: #f8fafc;
+            border: 1px solid #edf0f4;
+            border-radius: 14px;
+            padding: 17px;
+            margin-bottom: 16px;
+            transition: 0.3s;
+        }
+
+        .detail-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .label {
+            color: #718096;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #172033;
+        }
+
+        .value i {
+            color: #1268e8;
+            margin-right: 5px;
+        }
+
+        /* FARE */
+
+        .fare {
+            margin: 12px 30px 30px;
+            padding: 22px;
+            border-radius: 17px;
+            background: linear-gradient(135deg, #e8f2ff, #dcecff);
+            border: 1px solid #cfe2ff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .fare-title {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .fare-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #075bd5;
+            margin-top: 4px;
+        }
+
+        .fare-icon {
+            font-size: 35px;
+            color: #1268e8;
+        }
+
+        /* DIVIDER */
+
+        .ticket-divider {
+            border-top: 2px dashed #cbd5e1;
+            margin: 0;
+            position: relative;
+        }
+
+        /* QR */
+
+        .qr-section {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+
+        .qr-code {
+            width: 110px;
+            height: 110px;
+            margin: auto;
+            border: 8px solid white;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        .qr-section h5 {
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        .qr-section p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* JOURNEY */
+
+        .journey-message {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            padding: 5px 20px 20px;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            padding: 0 30px 35px;
+        }
+
+        .buttons .btn {
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .print-btn {
+            background: #212529;
+            color: white;
+        }
+
+        .print-btn:hover {
+            background: #000;
+            color: white;
+        }
+
+        .home-btn {
+            background: #1268e8;
+            color: white;
+        }
+
+        .home-btn:hover {
+            background: #084298;
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .ticket {
+                margin: 15px;
+                border-radius: 18px;
+            }
+
+            .ticket-header {
+                padding: 22px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .confirmed {
+                font-size: 11px;
+                padding: 7px 10px;
+            }
+
+            .flight-route {
+                margin: 15px;
+                padding: 22px 15px;
+            }
+
+            .airport-code {
+                font-size: 25px;
+            }
+
+            .airport-name {
+                font-size: 12px;
+            }
+
+            .flight-line {
+                margin: 0 10px;
+            }
+
+            .flight-line i {
+                font-size: 18px;
+                left: 42%;
+            }
+
+            .details {
+                padding: 0 18px;
+            }
+
+            .fare {
+                margin: 10px 18px 25px;
+            }
+
+            .buttons {
+                padding: 0 18px 25px;
+            }
+
+            .buttons .btn {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* PRINT */
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+            .ticket {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .buttons {
+                display: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="ticket">
+
+    <!-- HEADER -->
+
+    <div class="ticket-header">
+
+        <div class="d-flex justify-content-between align-items-start">
+
+            <div>
+
+                <div class="logo">
+                    <i class="bi bi-airplane-fill"></i>
+                    AeroReserve
+                </div>
+
+                <div class="subtitle">
+                    Airline Reservation & Ticket Management System
+                </div>
+
+            </div>
+
+            <span class="confirmed">
+                <i class="bi bi-check-circle-fill"></i>
+                CONFIRMED
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUCCESS MESSAGE -->
+
+    <div class="success-section">
+
+        <div class="success-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <h1>
+            Booking Successful!
+        </h1>
+
+        <p>
+            Your flight has been successfully booked.
+        </p>
+
+    </div>
+
+
+    <!-- ROUTE -->
+
+    <div class="flight-route">
+
+        <div class="airport">
+
+            <div class="airport-code">
+                MAA
+            </div>
+
+            <div class="airport-name">
+                Chennai
+            </div>
+
+        </div>
+
+
+        <div class="flight-line">
+
+            <i class="bi bi-airplane-fill"></i>
+
+        </div>
+
+
+        <div class="airport">
+
+            <div class="airport-code">
+                HYD
+            </div>
+
+            <div class="airport-name">
+                Hyderabad
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOOKING DETAILS -->
+
+    <div class="details">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Booking ID
+                    </div>
+
+                    <div class="value">
+                        <i class="bi bi-ticket-perforated-fill"></i>
+                       AR{{ booking.id }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Flight Number
+                    </div>
+
+                    <div class="value">
+                        <i class="bi bi-airplane"></i>
+                        {{ booking.flight.flight_number }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Departure
+                    </div>
+
+                    <div class="value">
+                        <i class="bi bi-clock"></i>
+                        {{ booking.flight.departure_time }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Travel Class
+                    </div>
+
+                    <div class="value">
+                        <i class="bi bi-person-vcard"></i>
+                       {{ booking.flight.travel_class }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Passenger
+                    </div>
+
+                    <div class="value">
+                        <i class="bi bi-person-fill"></i>
+                        {{ booking.passenger_name }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="detail-box">
+
+                    <div class="label">
+                        Booking Status
+                    </div>
+
+                    <div class="value text-success">
+                        <i class="bi bi-check-circle-fill"></i>
+                        Confirmed
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL FARE -->
+
+    <div class="fare">
+
+        <div>
+
+            <div class="fare-title">
+                Total Fare
+            </div>
+
+            <div class="fare-amount">
+               {{ booking.flight.price }}
+            </div>
+
+        </div>
+
+        <div class="fare-icon">
+            <i class="bi bi-credit-card-fill"></i>
+        </div>
+
+    </div>
+
+
+    <!-- DASHED DIVIDER -->
+
+    <div class="ticket-divider"></div>
+
+
+    <!-- QR SECTION -->
+
+    <div class="qr-section">
+
+        <div class="qr-code d-flex align-items-center justify-content-center">
+
+            <i class="bi bi-qr-code"
+               style="font-size:90px;">
+            </i>
+
+        </div>
+
+        <h5>
+            Ticket Verification
+        </h5>
+
+        <p>
+            Scan this code for booking verification
+        </p>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div class="journey-message">
+
+        ✈️ Have a safe and pleasant journey with
+        <strong>AeroReserve</strong>!
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <div class="row g-2">
+
+            <div class="col-md-6">
+
+                <button
+                    onclick="window.print()"
+                    class="btn print-btn w-100">
+
+                    <i class="bi bi-printer-fill"></i>
+                    Print Ticket
+
+                </button>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <a
+                    href="{% url 'home' %}"
+                    class="btn home-btn w-100">
+
+                    <i class="bi bi-house-fill"></i>
+                    Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
